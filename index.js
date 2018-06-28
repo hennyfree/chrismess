@@ -1,7 +1,7 @@
 class App {
  constructor() {
 const form = document.querySelector('form#flickForm')
-form.addEventListener('submit', (ev) =>
+form.addEventListener('submit', (ev) => {
 ev.preventDefault()
 this.handleSubmit(ev)
      })
@@ -46,7 +46,7 @@ const span = this.renderProperty(propertyName, flick[propertyName])
     
     f.reset()
     f.flickName.focus()
-     }
+     } }
      
      const app = new App() 
 
