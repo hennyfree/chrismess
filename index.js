@@ -1,40 +1,52 @@
+class App {
+ constructor() {
 const form = document.querySelector('form#flickForm')
+form.addEventListener('submit', (ev) =>
+ev.preventDefault()
+this.handleSubmit(ev)
+     })
+  }
 
+  renderProperty(name, value) {
+const span = document.createElement('span')
+span.classList.add(name)
+span.textContent = value
+return span
+  }
 
-const handleSubmit= function(ev) {
-    ev.preventDefault()
+  renderItem(flick) {
+const item = document.createElement('li')
+item.classList.add('flick')
+
+ // get the list of properties
+ const properties = Object.keys(flick)
+
+// loop over the properties
+properties.forEach((propertyName) => {
+// build a span, and append it to the list
+const span = this.renderProperty(propertyName, flick[propertyName])
+  item.appendChild(span)
+     })
+
+     return item
+     }
+
+     handleSubmit(ev) {
     const f = ev.target
 
+    const flick = {
+    name: f.flickName.value,
+    chris: f.chrisName.value,
+    }
 
-    const flickName = f.flickName.value
-    const flickSpan = document.createElement('span')
-    flickSpan.textContent = flickName
-
-const movieName = f.movieName.value
-const chrisSpan = document.createElement('span')
-chrisSpan.textContent = chrisName
-
+    const item = this.renderItem(flick)
+    
     const list = document.querySelector('#flicks')
     list.appendChild(item)
+    
+    f.reset()
+     }
      
-    f.reset ()
-}
+     
+     const app = new App() 
 
-const changeMovie = function(ev) {
-    ev.preventDefault()
-    const f = ev.target
-
-    const flickName = f.flickName.value
-    const item = document.createElement('li')
-    item.textContent = flickName
-
-    const list = document.querySelector('#flicks2')
-    list.appendChild(item)
-
-    f.reset ()
-    fi.flickName.focus()
-}
-
-
-form.addEventListener('submit', changeName)
-f4rm.addEventListener('submit', changeMovie)
