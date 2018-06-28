@@ -45,8 +45,8 @@ const span = this.renderProperty(propertyName, flick[propertyName])
     list.appendChild(item)
     
     f.reset()
+    f.flickName.focus()
      }
-     
      
      const app = new App() 
 
